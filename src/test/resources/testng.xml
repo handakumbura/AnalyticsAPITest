@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Analytics REST API Suite" verbose="1" preserve-order="true">
+	<test name="Analytics Test" >
+	<classes>
+		<class name="com.dumiduh.das.TableExistsServiceTest" />
+		<class name="com.dumiduh.das.RecordsOfTableServiceTest" />
+		<class name="com.dumiduh.das.RecordCountServiceTest" />
+		<class name="com.dumiduh.das.ListingAllTablesService" />
+		<class name="com.dumiduh.das.GetTableSchemaTest" />
+	</classes>
+	</test>
+</suite>
