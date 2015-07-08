@@ -24,10 +24,12 @@ public class GetTableSchemaTest {
         analyticsAPIInvoker = null;
         adminServiceInvoker= null;
 
-        //if the test is getting run non independently(pom profile) comment out the below 3 lines.
-        String killserver = "sh "+new File("").getAbsolutePath()+"/src/test/resources/teardown.sh";
-        ShellExecutor executor = new ShellExecutor(killserver);
-        executor.execute();
+        //if the das server is started as part of the test it is killed.
+        if(System.getProperty("killdasserver").equals("true")) {
+            String killserver = "sh " + new File("").getAbsolutePath() + "/src/test/resources/teardown.sh "+System.getProperty("dashome");
+            ShellExecutor executor = new ShellExecutor(killserver);
+            executor.execute();
+        }
     }
 
     @Test

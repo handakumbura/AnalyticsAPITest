@@ -11,6 +11,7 @@
 		<daspack>/home/dumiduh/QAWORK/DAS3.0/PACK2506/wso2das-3.0.0-SNAPSHOT.zip</daspack>
 		<packname>wso2das-3.0.0-SNAPSHOT</packname>
 		<serverhost>localhost</serverhost>
+		<cleanup>true</cleanup>
   </properties>
    
   <repositories>
@@ -44,6 +45,8 @@
 	    <groupId>org.apache.axis2.wso2</groupId>
             <artifactId>axis2</artifactId>
             <version>1.6.1.wso2v4</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/lib/axis2-1.6.1.wso2v4.jar</systemPath>
     </dependency>
     <dependency>
 	<groupId>commons-logging</groupId>
@@ -59,6 +62,8 @@
 	<groupId>org.apache.axiom</groupId>
 	<artifactId>axiom</artifactId>
 	<version>1.2.11.wso2v1</version>
+	<scope>system</scope>
+	<systemPath>${basedir}/lib/axiom-1.2.11.wso2v1.jar</systemPath>
     </dependency>
     <dependency>
 	<groupId>org.apache.neethi</groupId>
@@ -74,6 +79,8 @@
 	<groupId>org.wso2.securevault</groupId>
 	<artifactId>securevault</artifactId>
 	<version>1.0.0</version>
+	<scope>system</scope>
+	<systemPath>${basedir}/lib/org.wso2.securevault-1.0.0.jar</systemPath>
     </dependency>
     <dependency>
 	<groupId>commons-httpclient</groupId>
@@ -95,16 +102,22 @@
       <groupId>org.wso2.carbon.event.receiver.admin</groupId>
       <artifactId>EventReceiverAdminService</artifactId>
       <version>1.0.0</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/lib/EventReceiverAdminService-test-client-1.0.0.jar</systemPath>
    </dependency>
     <dependency>
       <groupId>org.wso2.carbon.analytics.stream.persistence</groupId>
       <artifactId>EventStreamPersistenceAdminService</artifactId>
       <version>1.0.0</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/lib/EventStreamPersistenceAdminService-test-client-1.0.0.jar</systemPath>
    </dependency>
     <dependency>
       <groupId>org.wso2.carbon.event.stream.admin</groupId>
       <artifactId>EventStreamAdminService</artifactId>
       <version>1.0.0</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/lib/EventStreamAdminService-test-client-1.0.0.jar</systemPath>
    </dependency>
   </dependencies>
 
@@ -167,6 +180,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.14.1</version>
                 <configuration>
+		    <systemPropertyVariables>
+				<killdasserver>${cleanup}</killdasserver>
+				<dashome>${project.build.directory}/${packname}</dashome>
+		    </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
